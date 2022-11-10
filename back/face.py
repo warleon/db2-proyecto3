@@ -34,5 +34,4 @@ def doIndexing(rootdir):
 
 
 if __name__=="__main__":
-	if not os.path.exists(indexPath):
-		doIndexing(dataPath)
+	doIndexing(dataPath)
