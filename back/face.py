@@ -33,5 +33,6 @@ def doIndexing(rootdir):
 						print("indexed:",path,"with id",count)
 
 
-if __name__=="__main__":
-	doIndexing(dataPath)
+#if __name__=="__main__":
+	#index already done :v
+	#doIndexing(dataPath)
