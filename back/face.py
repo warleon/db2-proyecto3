@@ -2,9 +2,15 @@ import face_recognition as fr
 import os
 import numpy as np
 from rtree import index
+import time
+import heapq
+from heapq import heappush, heappop
+
 
 allowedExtensions = [".jpg"]
-
+encoding_results = list()
+encoding_directory = list()
+direction = "/content/db2-proyecto3/data/"
 dataPath = "../data/"
 indexPath="../index/Rtree"
 config =index.Property()
@@ -32,24 +38,29 @@ def doIndexing(rootdir):
 						idx.insert(count, p,obj=path)
 						print("indexed:",path,"with id",count)
 
-def doIndexing1(rootdir):
-	count = 0
-	for subdir, dirs, files in os.walk(rootdir):
-		for file in files:
-				filename, fileExtension = os.path.splitext(file)
-				if fileExtension.lower() in allowedExtensions:
-					 path = os.path.join(subdir, file)
-					 img = fr.load_image_file(path)
-					 enc = fr.face_encodings(img)
-                                         encoding_results.append(enc[0])
-                                         encoding_directory.append(path)
+def doIndexing1(rootdir, N=10):
+    count = 0
+    i=0
+    for subdir, dirs, files in os.walk(rootdir):
+        if i==N:
+           break
+        for file in files:
+                filename, fileExtension = os.path.splitext(file)
+                if fileExtension.lower() in allowedExtensions:
+                     path = os.path.join(subdir, file)
+                     img = fr.load_image_file(path)
+                     enc = fr.face_encodings(img)
+                     print("gactm")
+                     encoding_results.append(enc[0])
+                     encoding_directory.append(path)
+        i = i + 1
 
 def sequential_search(image_encoding, k):
     global encoding_directory
     priority_queue = []
     distances = fr.face_distance(encoding_results, image_encoding[0])
     for i in range(len(distances)):
-        heappush(priority_queue, (1/distances[i], encoding_directory[i]))
+        heappush(priority_queue, (-distances[i], encoding_directory[i]))
         if(len(priority_queue) > k):
             heappop(priority_queue)
     answers = sorted(priority_queue, key=lambda tup: tup[0], reverse=True)
@@ -64,6 +75,7 @@ def range_search(image_encoding, r):
             result.append((distances[i],encoding_directory[i]))
     result.sort(key = lambda tup: tup[0]) 
     return result
+
 
 def knn_sequential(image_directory, k):
     image_encoding = fr.face_encodings(fr.load_image_file(image_directory))
@@ -81,7 +93,7 @@ def knn_range(image_directory, r):
     ans = [x[1] for x in range_results]
     return (ans, round(t2-t1,6))
 
-
 #if __name__=="__main__":
 	#index already done :v
+	#doIndexing1(direction,10)
 	#doIndexing(dataPath)
