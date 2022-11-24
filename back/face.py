@@ -50,7 +50,6 @@ def doIndexing1(rootdir, N=10):
                      path = os.path.join(subdir, file)
                      img = fr.load_image_file(path)
                      enc = fr.face_encodings(img)
-                     print("gactm")
                      encoding_results.append(enc[0])
                      encoding_directory.append(path)
         i = i + 1
