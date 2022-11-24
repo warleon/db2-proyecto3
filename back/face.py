@@ -41,8 +41,8 @@ def doIndexing1(rootdir):
 					 path = os.path.join(subdir, file)
 					 img = fr.load_image_file(path)
 					 enc = fr.face_encodings(img)
-                     encoding_results.append(enc[0])
-                     encoding_directory.append(path)
+                                         encoding_results.append(enc[0])
+                                         encoding_directory.append(path)
 
 def sequential_search(image_encoding, k):
     global encoding_directory
