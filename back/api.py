@@ -1,4 +1,6 @@
 from flask import *
+from werkzeug.utils import secure_filename
+
 import os
 from face import *
 
@@ -30,7 +32,7 @@ def analize():
     img = fr.load_image_file(path)
     enc = fr.face_encodings(img)
     for e in enc:
-        pass
+        print(e)
     return "ta bien"
 
 
