@@ -10,6 +10,8 @@ from face import *
 #config.dimension = 128
 #idx = index.Rtree(indexPath,properties=config,interleaved=False)
 
+KNN = 8
+
 app = Flask(__name__)
 app.config['MEDIA_FOLDER'] = dataPath
 app.config['UPLOAD_FOLDER'] = "./media/"
@@ -32,7 +34,12 @@ def analize():
     img = fr.load_image_file(path)
     enc = fr.face_encodings(img)
     for e in enc:
-        print(e)
+        point = toPoint(e)
+        res = idx.nearest(point,KNN,objects=True)
+        #r attribs : 'bbox', 'bounds', 'get_object', 'handle', 'id', 'object', 'owned'
+        for r in res:
+            print(r.id)
+            print(r.object)
     return "ta bien"
 
 
