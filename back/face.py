@@ -17,6 +17,9 @@ config =index.Property()
 config.dimension = 128
 idx = index.Rtree(indexPath,properties=config,interleaved=False)
 
+def toEnc(vec):
+    c = vec[0::2]
+    return c
 def toPoint(vec):
 	c = np.zeros((vec.size + vec.size), dtype=vec.dtype)
 	c[0::2] = vec

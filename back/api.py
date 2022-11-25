@@ -27,20 +27,28 @@ def send_media(path):
 @app.post('/analize')
 def analize():
     file = request.files['image']
-    print(file)
+    #print(file)
     filename = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(path)
     img = fr.load_image_file(path)
     enc = fr.face_encodings(img)
+    response = []
     for e in enc:
         point = toPoint(e)
         res = idx.nearest(point,KNN,objects=True)
+        neightbors = []
         #r attribs : 'bbox', 'bounds', 'get_object', 'handle', 'id', 'object', 'owned'
         for r in res:
-            print(r.id)
-            print(r.object)
-    return "ta bien"
+            obj = {}
+            #the distance with the same object is diferent than 0 because of floating point numbers precision being diferent in each representation
+            obj["distance"]=np.linalg.norm(toEnc(r.bbox)-e)
+            obj["image"]=r.object.strip("./")
+            #obj["encoding"] = toEnc(r.bbox)
+            neightbors.append(obj)
+        response.append(neightbors)
+    #print(response)
+    return response
 
 
 if __name__ == '__main__':
