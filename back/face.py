@@ -95,6 +95,28 @@ def knn_range(image_directory, r):
     ans = [x[1] for x in range_results]
     return (ans, round(t2-t1,6))
 
+def time_knn_rtree(N=10):
+    i=0
+    rindex = index.Rtree(properties=config,interleaved=False)
+    last =None
+    for subdir, dirs, files in os.walk(rootdir):
+        if i==N:
+           break
+        for file in files:
+            path = os.path.join(subdir, file)
+            img = fr.load_image_file(path)
+            enc = fr.face_encodings(img)
+            for e in enc:
+                p = toPoint(e)
+                rindex.insert(0, p)
+                last =p
+                i = i + 1
+    t1 = time.time()
+    rtree.nearest(p,8)
+    t2 = time.time()
+    return round(t2-t1,6)
+
+
 #if __name__=="__main__":
 	#index already done :v
 	#doIndexing1(direction,10)
