@@ -5,7 +5,8 @@ from rtree import index
 import time
 import heapq
 from heapq import heappush, heappop
-
+from sklearn.neighbors import KDTree
+import pandas as pd
 
 allowedExtensions = [".jpg"]
 encoding_results = list()
@@ -116,8 +117,22 @@ def time_knn_rtree(N=10):
     t2 = time.time()
     return round(t2-t1,6)
 
+def generate_table():
+   df = pd.DataFrame(encoding_results)
+   df['paths'] = encoding_directory 
+   return df
+
+
+def KNN_KDTree(image_name, k):
+    image = fr.load_image_file(image_name)
+    faces = fr.face_encodings(image)
+    kd_tree = KDTree(df[df.columns[:-1]])
+    result = kd_tree.query([faces[0]], k)
+    ans = result[1][0]
+    return [df.iloc[ans[i], -1] for i in range(k)]
 
 #if __name__=="__main__":
 	#index already done :v
 	#doIndexing1(direction,10)
+	#df = generate_table()
 	#doIndexing(dataPath)
