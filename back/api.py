@@ -10,7 +10,6 @@ from face import *
 #config.dimension = 128
 #idx = index.Rtree(indexPath,properties=config,interleaved=False)
 
-KNN = 8
 
 app = Flask(__name__)
 app.config['MEDIA_FOLDER'] = dataPath
@@ -27,6 +26,7 @@ def send_media(path):
 @app.post('/analize')
 def analize():
     file = request.files['image']
+    KNN =request.form['topk']
     #print(file)
     filename = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
