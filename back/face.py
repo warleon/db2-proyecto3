@@ -123,13 +123,16 @@ def generate_table():
    return df
 
 
-def KNN_KDTree(image_name, k):
+def KDTree_HighD(image_name, k):
+    t1= time.time()
     image = fr.load_image_file(image_name)
     faces = fr.face_encodings(image)
     kd_tree = KDTree(df[df.columns[:-1]])
     result = kd_tree.query([faces[0]], k)
     ans = result[1][0]
-    return [df.iloc[ans[i], -1] for i in range(k)]
+    t2= time.time()
+    return ([df.iloc[ans[i], -1] for i in range(k)],round(t2-t1,6))
+
 
 #if __name__=="__main__":
 	#index already done :v
