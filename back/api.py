@@ -25,8 +25,8 @@ def send_media(path):
 
 @app.post('/analize')
 def analize():
-    file = request.files['image']
-    KNN =request.form['topk']
+    file = request.files['imagefile']
+    KNN =int(request.form['topk'])
     #print(file)
     filename = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -46,7 +46,7 @@ def analize():
             obj["image"]=r.object.strip("./")
             #obj["encoding"] = toEnc(r.bbox)
             neightbors.append(obj)
-        response.append(neightbors)
+        response.append(sorted(neightbors, key=lambda k: k['distance']))
     #print(response)
     return response
 

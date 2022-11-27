@@ -7,8 +7,9 @@ function PersonDisplay({ images, index }) {
             <hr className="person-hr"></hr>
             <span className="person-title">Person {index}</span>
             <div className="person-imgs-cont">
-                {images.map((item) => {
-                    return <div className="img-score-cont"><div style={{backgroundImage: `url(${item.image})`}} className="person-img"></div><span className="img-score-text">Score: {item.score.toFixed(4)}</span></div>
+                {
+                images.map((item) => {
+                    return <div className="img-score-cont"><div style={{backgroundImage: `url(${"api/"+item.image})`}} className="person-img"></div><span className="img-score-text">Score: {item.distance.toFixed(4)}</span></div>
                 })}
             </div>
         </div>

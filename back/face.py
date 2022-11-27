@@ -113,9 +113,9 @@ def time_knn_rtree(N=10):
                 last =p
                 i = i + 1
     t1 = time.time()
-    rtree.nearest(p,8)
+    res = rtree.nearest(last,8)
     t2 = time.time()
-    return round(t2-t1,6)
+    return (res,round(t2-t1,6))
 
 def generate_table():
    df = pd.DataFrame(encoding_results)
