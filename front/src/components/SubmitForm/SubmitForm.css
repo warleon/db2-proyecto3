@@ -1,0 +1,22 @@
+.sf-cont {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-top: 30px;
+}
+
+.topk-submit {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.topk-input {
+    width: calc(20%);
+    margin-left: 10px;
+}
+
+.sf-submit {
+    margin-left: auto;
+    width: calc(80% - 80px);
+}
