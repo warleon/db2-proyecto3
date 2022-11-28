@@ -22,10 +22,11 @@ def toEnc(vec):
     c = vec[0::2]
     return c
 def toPoint(vec):
-	c = np.zeros((vec.size + vec.size), dtype=vec.dtype)
-	c[0::2] = vec
-	c[1::2] = vec#+np.finfo(np.float32).eps
-	return c
+	# c = np.zeros((vec.size + vec.size), dtype=vec.dtype)
+	# c[0::2] = vec
+	# c[1::2] = vec#+np.finfo(np.float32).eps
+	# return c
+    return np.repeat(vec,2)
 
 def doIndexing(rootdir):
 	count = 0

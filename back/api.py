@@ -42,11 +42,10 @@ def analize():
         for r in res:
             obj = {}
             #the distance with the same object is diferent than 0 because of floating point numbers precision being diferent in each representation
-            obj["distance"]=np.linalg.norm(toEnc(r.bbox)-e)
+            obj["distance"]=float(fr.face_distance(np.array([toEnc(r.bbox)]),np.array([e])))
             obj["image"]=r.object.strip("./")
-            #obj["encoding"] = toEnc(r.bbox)
             neightbors.append(obj)
-        response.append(sorted(neightbors, key=lambda k: k['distance']))
+        response.append(neightbors)
     #print(response)
     return response
 
