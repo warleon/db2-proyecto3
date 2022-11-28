@@ -14,4 +14,4 @@ Para este proyecto se utilizó principalmente la librería de Face Recognition. 
 
 ## Análisis de la maldición de la dimensionalidad
 Debido a que el tamaño de los vectores son de 128, es muy probable que, al momento de calcular las distancias entre imágenes, se pueda apreciar que hay muy poca variabilidad entre ellas, lo cual no es nada favorable si se quiere justamente analizar diferencias. Es por ello que es necesario hacer una reducción de la dimensionalidad.
-<img src="src/grafico1.png" width="800">
+<img src="src/imagen1.png" width="800">
