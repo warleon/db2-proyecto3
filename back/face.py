@@ -196,8 +196,9 @@ def load_faces(N):
                 print("indexed:",path,i)
     return res
 
-def time_knn_rtree(faces,rindex,N=10):
+def time_knn_rtree(faces,N=10):
     i=0
+    rindex = index.Index(properties=config,interleaved=False)
     last =None
     for face in faces:
         if i>=N:
@@ -210,6 +211,23 @@ def time_knn_rtree(faces,rindex,N=10):
     res = rindex.nearest(last,8)
     t2 = time.time()
     return (res,round(t2-t1,6))
+def time_knn_secuencial(faces,N=10):
+    t1 = time.time()
+    k=8
+    distk=[]
+    last = np.array(faces[-1])
+    for i in range(N):
+        curr = np.array(faces[i])
+        dist= np.linalg.norm(last-curr)
+        if len(distk)>=k:
+            max_index = distk.index(max(distk))
+            if dist < distk[max_index]:
+                distk[max_index]= dist
+        else:
+            distk.append(dist)
+    t2 = time.time()
+    return round(t2-t1,6)
+
 
 if __name__=="__main__":
 
@@ -220,6 +238,6 @@ if __name__=="__main__":
     with open("./faces.json","r") as file:
         faces=js.load(file)
         for n in [100,200,400,800,1600,3200,6400,12800]:
-            rindex = index.Index(properties=config,interleaved=False)
-            t = time_knn_rtree(faces,rindex,n)
+            #t = time_knn_rtree(faces,n)
+            t = time_knn_secuencial(faces,n)
             print(t)

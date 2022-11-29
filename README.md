@@ -26,7 +26,7 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
 <table>
     <thead>
         <tr>
-            <th >K = 8</th>
+            <th >N (& k=8)</th>
             <th>KNN Secuencial</th>
             <th>KNN RTree</th>
             <th>KNN HighD</th>
@@ -34,50 +34,50 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
     </thead>
     <tbody>
         <tr>
-            <td>N = 100</td>
-            <td>0.000200</td>
+            <td>100</td>
+            <td>0.008595</td>
             <td>0.000266</td>
             <td>0.000100</td>
         </tr>
         <tr>
-            <td>N = 200</td>
-            <td >0.00040</td>
+            <td>200</td>
+            <td>0.006921</td>
             <td>0.000422</td>
             <td>0.000100</td>
         </tr>
         <tr>
-            <td >N = 400</td>
-            <td>0.000800</td>
+            <td >400</td>
+            <td>0.020270</td>
             <td>0.000743</td>
             <td>0.000200</td>
         </tr>
         <tr>
-            <td>N = 800</td>
-            <td>0.002200</td>
+            <td>800</td>
+            <td>0.020270</td>
             <td>0.001822</td>
             <td>0.000300</td>
         </tr>
         <tr>
-            <td>N = 1600</td>
-            <td>0.004900</td>
+            <td>1600</td>
+            <td>0.052544</td>
             <td>0.003947</td>
             <td>0.000500</td>
         </tr>
         <tr>
-            <td>N = 3200</td>
-            <td>0.007100</td>
+            <td>3200</td>
+            <td>0.086557</td>
             <td>0.008111</td>
             <td>0.000900</td>
         </tr>
         <tr>
-            <td>N = 6400</td>
-            <td>0.014500</td>
+            <td>6400</td>
+            <td>0.162084</td>
             <td>0.017595</td>
             <td>0.001000</td>
         </tr>
         <tr>
-            <td>N = 12800</td>
-            <td>0.013200</td>
+            <td>12800</td>
+            <td>0.454654</td>
             <td>0.038934</td>
             <td>0.001400</td>
         </tr>
