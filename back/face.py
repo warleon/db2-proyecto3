@@ -7,6 +7,7 @@ import heapq
 from heapq import heappush, heappop
 from sklearn.neighbors import KDTree
 import pandas as pd
+import json as js
 
 allowedExtensions = [".jpg"]
 encoding_results = list()
@@ -97,24 +98,21 @@ def knn_range(image_directory, r):
     ans = [x[1] for x in range_results]
     return (ans, round(t2-t1,6))
 
-def time_knn_rtree(N=10):
+def time_knn_rtree(faces,N=10):
     i=0
-    rindex = index.Rtree(properties=config,interleaved=False)
+    lconfig =index.Property()
+    lconfig.dimension = 128
+    rindex = index.Rtree(properties=lconfig,interleaved=False)
     last =None
-    for subdir, dirs, files in os.walk(rootdir):
-        if i==N:
-           break
-        for file in files:
-            path = os.path.join(subdir, file)
-            img = fr.load_image_file(path)
-            enc = fr.face_encodings(img)
-            for e in enc:
-                p = toPoint(e)
-                rindex.insert(0, p)
-                last =p
-                i = i + 1
+    for face in faces:
+        if i>=N:
+            break
+        p = toPoint(face)
+        rindex.insert(0, p)
+        last =p
+        i = i + 1
     t1 = time.time()
-    res = rtree.nearest(last,8)
+    res = rindex.nearest(last,8)
     t2 = time.time()
     return (res,round(t2-t1,6))
 
@@ -134,8 +132,38 @@ def KDTree_HighD(image_name, k):
     t2= time.time()
     return ([df.iloc[ans[i], -1] for i in range(k)],round(t2-t1,6))
 
+def load_faces(N):
+    res=[]
+    i=0
+    for subdir, dirs, files in os.walk(dataPath):
+        if i>=N:
+           break
+        for file in files:
+            if i>=N:
+                break
+            path = os.path.join(subdir, file)
+            img = fr.load_image_file(path)
+            enc = fr.face_encodings(img)
+            for e in enc:
+                if i>=N:
+                    break
+                p = toPoint(e)
+                res.append(list(p))
+                last =p
+                i = i + 1
+                print("indexed:",path,i)
+    return res
 
-#if __name__=="__main__":
+
+if __name__=="__main__":
+
+    faces = load_faces(12800)
+    #faces = load_faces(100)
+    with open("./faces.json","w") as file:
+        js.dump(faces,file)
+    # for n in [100,200,400,800,1600,3200,6400,12800]:
+    #     t = time_knn_rtree(faces,n)
+    #     print(t)
 	#index already done :v
 	#doIndexing1(direction,10)
 	#df = generate_table()
