@@ -42,49 +42,49 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
             <td >N = 100</td>
             <td >0.0002</td>
             <td> </td>
-            <td>0.00011075</td>
+            <td>0.0001</td>
         </tr>
         <tr>
             <td>N = 200</td>
             <td >0.0004</td>
             <td> </td>
-            <td>0.00016875</td>
+            <td>0.0001</td>
         </tr>
         <tr>
             <td >N = 400</td>
             <td>0.0008</td>
             <td> </td>
-            <td>0.00020075</td>
+            <td>0.0002</td>
         </tr>
         <tr>
             <td>N = 800</td>
             <td>0.0022</td>
             <td> </td>
-            <td>0.0003375</td>
+            <td>0.0003</td>
         </tr>
         <tr>
             <td>N = 1600</td>
-            <td>0.00492</td>
+            <td>0.0049</td>
             <td> </td>
-            <td>0.0005102500000000001</td>
+            <td>0.0005</td>
         </tr>
         <tr>
             <td>N = 3200</td>
             <td>0.0071</td>
             <td> </td>
-            <td>0.00087975</td>
+            <td>0.0009</td>
         </tr>
         <tr>
             <td>N = 6400</td>
-            <td>0.01453</td>
+            <td>0.0145</td>
             <td> </td>
-            <td>0.0010344999999999998</td>
+            <td>0.0010</td>
         </tr>
         <tr>
             <td>N = 12800</td>
-            <td>0.01315</td>
+            <td>0.0132</td>
             <td> </td>
-            <td>0.00140425</td>
+            <td>0.0014</td>
         </tr>
     </tbody>
 </table>
