@@ -15,7 +15,7 @@ Para este proyecto se utilizó principalmente la librería de Face Recognition. 
 ## Algoritmos
 ### Indexación
 Para la indexacion de las imagenes primero las analaizamos con la libreria de "face_recognition" para obtener los vectores caracteristicos. Luego usamos la libreria "rtree" para indexar estos vecotres en un indice rtree en disco. Esto se hace insertando cada vector caracteristico en la estructura de datos.
-### Búsqueda KNN
+### Búsqueda RTree
 Para la busqueda KNN la libreria nos proporciona con una funcion "nearest" la cual aplica el algoritmo visto en clase para encontrar los N vecinos mas cercanos.
 
 ### Búsqueda por rango
