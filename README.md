@@ -19,7 +19,12 @@ Para la indexacion de las imagenes primero las analaizamos con la libreria de "f
 Para la busqueda KNN la libreria nos proporciona con una funcion "nearest" la cual aplica el algoritmo visto en clase para encontrar los N vecinos mas cercanos.
 
 ### Búsqueda por rango
-No damos soporte para este tipo de busqueda en nuestra demo.
+Se implementó la búsqueda por rango para el caso de KNNSequencial, en el cual pasamos como parámetro al radio de búsqueda r.
+
+### Búsqueda KNN HighD
+Se implementó este algoritmo aplicando la reducción de la dimensionalidad (PCA) a un tamaño de 50. Luego, con la libería de SKLearn se usó una instancia de KDTree y se insertó los encodings con los files. Luego, se realizó la búsqueda con una complejidad de O(log(n)).
+
+
 ## Análisis de la maldición de la dimensionalidad
 Debido a que el tamaño de los vectores son de 128, es muy probable que, al momento de calcular las distancias entre imágenes, se pueda apreciar que hay muy poca variabilidad entre ellas, lo cual no es nada favorable si se quiere justamente analizar diferencias. Es por ello que es necesario hacer una reducción de la dimensionalidad.
 <img src="images/imagen1.png" width="500">
