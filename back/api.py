@@ -31,6 +31,7 @@ def analize():
     filename = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(path)
+    t1 = time.time()
     img = fr.load_image_file(path)
     enc = fr.face_encodings(img)
     response = []
@@ -47,6 +48,8 @@ def analize():
             neightbors.append(obj)
         response.append(neightbors)
     #print(response)
+    t2 = time.time()
+    print(round(t2-t1,6))
     return response
 
 
