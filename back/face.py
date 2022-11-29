@@ -98,23 +98,6 @@ def knn_range(image_directory, r):
     ans = [x[1] for x in range_results]
     return (ans, round(t2-t1,6))
 
-def time_knn_rtree(faces,N=10):
-    i=0
-    lconfig =index.Property()
-    lconfig.dimension = 128
-    rindex = index.Rtree(properties=lconfig,interleaved=False)
-    last =None
-    for face in faces:
-        if i>=N:
-            break
-        p = toPoint(face)
-        rindex.insert(0, p)
-        last =p
-        i = i + 1
-    t1 = time.time()
-    res = rindex.nearest(last,8)
-    t2 = time.time()
-    return (res,round(t2-t1,6))
 
 def generate_table():
    df = pd.DataFrame(encoding_results)
@@ -154,6 +137,24 @@ def load_faces(N):
                 print("indexed:",path,i)
     return res
 
+def time_knn_rtree(faces,N=10):
+    i=0
+    lconfig =index.Property()
+    lconfig.dimension = 128
+    rindex = index.Rtree(properties=lconfig,interleaved=False)
+    last =None
+    for face in faces:
+        if i>=N:
+            break
+        p = toPoint(face)
+        rindex.insert(0, p)
+        last =p
+        i = i + 1
+    t1 = time.time()
+    res = rindex.nearest(last,8)
+    t2 = time.time()
+    return (res,round(t2-t1,6))
+
 
 if __name__=="__main__":
 
@@ -161,9 +162,11 @@ if __name__=="__main__":
     #faces = load_faces(100)
     with open("./faces.json","w") as file:
         js.dump(faces,file)
-    # for n in [100,200,400,800,1600,3200,6400,12800]:
-    #     t = time_knn_rtree(faces,n)
-    #     print(t)
+    with open("./faces.json","r") as file:
+        #faces=js.load(file)
+        for n in [100,200,400,800,1600,3200,6400,12800]:
+            t = time_knn_rtree(faces,n)
+            print(t)
 	#index already done :v
 	#doIndexing1(direction,10)
 	#df = generate_table()
