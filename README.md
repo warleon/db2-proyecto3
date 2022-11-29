@@ -104,3 +104,5 @@ El front se implementó en JS utilizando principalmente el framework/librería R
 
 ## Use Case
 Primero el usuario le hace click al botón de subir archivo y este selecciona una imagen. La imagen se muestra en pantalla. Después, el usuario ingresa un valor en el input de topk, esto determinará cuantas imágenes se piden en el request por persona en la foto ingresada. Finalmente, el usuario le hace click al botón que dice submit, lo que causa que se haga un request a la API que retorna un arreglo de arreglos de todos, un arreglo por persona en la foto. Estas imágenes se muestran debajo de la imagen con la que se compararon.
+
+<img src="images/frontEjemplo.png" width="500">
