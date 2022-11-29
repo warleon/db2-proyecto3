@@ -87,3 +87,4 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
 
 <img src="images/grafica.png" width="500">
 
+En esta gráfica, se puede apreciar que, comparando tiempos de ejecución, se tiene que KDHighD < RTree < KNN_Sequential. Esto se debe a que el uso del índice y el uso de las estructuras de datos hacen más eficiente los algoritmos de búsqueda a comparación de hacerlo secuencialmente. 
