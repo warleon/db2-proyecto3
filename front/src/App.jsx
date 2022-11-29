@@ -9,6 +9,11 @@ function App() {
 
   const [images, setImages] = useState([])
 
+
+  useEffect(() => {
+    console.log(images)
+  },[images])
+
   const handleSubmit = (imagefile, topk) => {
     const url = 'api/analize'
     const formData = new FormData();

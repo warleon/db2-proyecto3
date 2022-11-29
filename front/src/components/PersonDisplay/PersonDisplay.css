@@ -28,6 +28,7 @@
 .img-score-cont {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .person-img {
