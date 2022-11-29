@@ -26,12 +26,7 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
 <table>
     <thead>
         <tr>
-            <th></th>
             <th >K = 8</th>
-            <th></th>
-        </tr>
-        <tr>
-            <th></th>
             <th>KNN Secuencial</th>
             <th>KNN RTree</th>
             <th>KNN HighD</th>
@@ -39,52 +34,52 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
     </thead>
     <tbody>
         <tr>
-            <td >N = 100</td>
-            <td >0.0002</td>
-            <td> </td>
-            <td>0.0001</td>
+            <td>N = 100</td>
+            <td>0.000200</td>
+            <td>0.000266</td>
+            <td>0.000100</td>
         </tr>
         <tr>
             <td>N = 200</td>
-            <td >0.0004</td>
-            <td> </td>
-            <td>0.0001</td>
+            <td >0.00040</td>
+            <td>0.000422</td>
+            <td>0.000100</td>
         </tr>
         <tr>
             <td >N = 400</td>
-            <td>0.0008</td>
-            <td> </td>
-            <td>0.0002</td>
+            <td>0.000800</td>
+            <td>0.000743</td>
+            <td>0.000200</td>
         </tr>
         <tr>
             <td>N = 800</td>
-            <td>0.0022</td>
-            <td> </td>
-            <td>0.0003</td>
+            <td>0.002200</td>
+            <td>0.001822</td>
+            <td>0.000300</td>
         </tr>
         <tr>
             <td>N = 1600</td>
-            <td>0.0049</td>
-            <td> </td>
-            <td>0.0005</td>
+            <td>0.004900</td>
+            <td>0.003947</td>
+            <td>0.000500</td>
         </tr>
         <tr>
             <td>N = 3200</td>
-            <td>0.0071</td>
-            <td> </td>
-            <td>0.0009</td>
+            <td>0.007100</td>
+            <td>0.008111</td>
+            <td>0.000900</td>
         </tr>
         <tr>
             <td>N = 6400</td>
-            <td>0.0145</td>
-            <td> </td>
-            <td>0.0010</td>
+            <td>0.014500</td>
+            <td>0.017595</td>
+            <td>0.001000</td>
         </tr>
         <tr>
             <td>N = 12800</td>
-            <td>0.0132</td>
-            <td> </td>
-            <td>0.0014</td>
+            <td>0.013200</td>
+            <td>0.038934</td>
+            <td>0.001400</td>
         </tr>
     </tbody>
 </table>

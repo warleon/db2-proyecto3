@@ -17,17 +17,17 @@ dataPath = "../data/"
 indexPath="../index/Rtree"
 config =index.Property()
 config.dimension = 128
-idx = index.Rtree(indexPath,properties=config,interleaved=False)
+#idx = index.Rtree(indexPath,properties=config,interleaved=False)
 
 def toEnc(vec):
     c = vec[0::2]
     return c
 def toPoint(vec):
-	# c = np.zeros((vec.size + vec.size), dtype=vec.dtype)
-	# c[0::2] = vec
-	# c[1::2] = vec#+np.finfo(np.float32).eps
-	# return c
-    return np.repeat(vec,2)
+	c = np.zeros((vec.size + vec.size), dtype=vec.dtype)
+	c[0::2] = vec
+	c[1::2] = vec#+np.finfo(np.float32).eps
+	return c
+    #return np.repeat(vec,2)
 
 def doIndexing(rootdir):
 	count = 0
@@ -115,46 +115,6 @@ def KDTree_HighD(image_name, k):
     t2= time.time()
     return ([df.iloc[ans[i], -1] for i in range(k)],round(t2-t1,6))
 
-def load_faces(N):
-    res=[]
-    i=0
-    for subdir, dirs, files in os.walk(dataPath):
-        if i>=N:
-           break
-        for file in files:
-            if i>=N:
-                break
-            path = os.path.join(subdir, file)
-            img = fr.load_image_file(path)
-            enc = fr.face_encodings(img)
-            for e in enc:
-                if i>=N:
-                    break
-                p = toPoint(e)
-                res.append(list(p))
-                last =p
-                i = i + 1
-                print("indexed:",path,i)
-    return res
-
-def time_knn_rtree(faces,N=10):
-    i=0
-    lconfig =index.Property()
-    lconfig.dimension = 128
-    rindex = index.Rtree(properties=lconfig,interleaved=False)
-    last =None
-    for face in faces:
-        if i>=N:
-            break
-        p = toPoint(face)
-        rindex.insert(0, p)
-        last =p
-        i = i + 1
-    t1 = time.time()
-    res = rindex.nearest(last,8)
-    t2 = time.time()
-    return (res,round(t2-t1,6))
-
 
 def experimentation():
   list_answers = [[],[]]
@@ -214,14 +174,52 @@ def experimentation():
 	#df = generate_table()
 	#doIndexing(dataPath)
 
+def load_faces(N):
+    res=[]
+    i=0
+    for subdir, dirs, files in os.walk(dataPath):
+        if i>=N:
+           break
+        for file in files:
+            if i>=N:
+                break
+            path = os.path.join(subdir, file)
+            img = fr.load_image_file(path)
+            enc = fr.face_encodings(img)
+            for e in enc:
+                if i>=N:
+                    break
+                p = toPoint(e)
+                res.append(list(p))
+                last =p
+                i = i + 1
+                print("indexed:",path,i)
+    return res
+
+def time_knn_rtree(faces,rindex,N=10):
+    i=0
+    last =None
+    for face in faces:
+        if i>=N:
+            break
+        p =face
+        rindex.insert(0, p)
+        last =p
+        i = i + 1
+    t1 = time.time()
+    res = rindex.nearest(last,8)
+    t2 = time.time()
+    return (res,round(t2-t1,6))
+
 if __name__=="__main__":
 
-    faces = load_faces(12800)
+    #faces = load_faces(12800)
     #faces = load_faces(100)
-    with open("./faces.json","w") as file:
-        js.dump(faces,file)
-    # with open("./faces.json","r") as file:
-    #     #faces=js.load(file)
-    #     for n in [100,200,400,800,1600,3200,6400,12800]:
-    #         t = time_knn_rtree(faces,n)
-    #         print(t)
+    #with open("./faces.json","w") as file:
+    #    js.dump(faces,file)
+    with open("./faces.json","r") as file:
+        faces=js.load(file)
+        for n in [100,200,400,800,1600,3200,6400,12800]:
+            rindex = index.Index(properties=config,interleaved=False)
+            t = time_knn_rtree(faces,rindex,n)
+            print(t)
