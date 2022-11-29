@@ -10,9 +10,10 @@
 ||Experimentación|
 ||Informe|
 |Rubio, Ignacio|
-||Postgresql|
-||Similiud coseno|
-||Informe|
+||ReactJs Front-end|
+||Dev server proxy|
+||Comunicación asíncrona con el API|
+||Informe parte frontend|
 |Angeles, JeanPier||
 ||Aguilar, Anthony|
 || Experimentacion|
