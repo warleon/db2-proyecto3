@@ -21,6 +21,73 @@ Para mitigar esto, se utilizó el módulo PCA proporcionado por la librería de 
 
 ## Experimentación 
 
+La experimentación se realizó variando los tamaños de N y fijando el valor de k=8. Además, calcularemos los tiempos en cada algoritmo mediante la función experimentacion definida en el código(para KDTree, KNN_Sequential) y se ejecutar á la función de KRtree para calcular su tiempo. Primero, de forma teórica, se sabe que para el KNNSecuencial, la complejidad es de O(N*D + N*logk) donde D representa a la complejidad del cálculo de la distancia entre 2 imágenes. Los resultados han sido los siguientes:
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th >K = 8</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>KNN Secuencial</th>
+            <th>KNN RTree</th>
+            <th>KNN HighD</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td >N = 100</td>
+            <td >0.0002</td>
+            <td> </td>
+            <td>0.00011075</td>
+        </tr>
+        <tr>
+            <td>N = 200</td>
+            <td >0.0004</td>
+            <td> </td>
+            <td>0.00016875</td>
+        </tr>
+        <tr>
+            <td >N = 400</td>
+            <td>0.0008</td>
+            <td> </td>
+            <td>0.00020075</td>
+        </tr>
+        <tr>
+            <td>N = 800</td>
+            <td>0.0022</td>
+            <td> </td>
+            <td>0.0003375</td>
+        </tr>
+        <tr>
+            <td>N = 1600</td>
+            <td>0.00492</td>
+            <td> </td>
+            <td>0.0005102500000000001</td>
+        </tr>
+        <tr>
+            <td>N = 3200</td>
+            <td>0.0071</td>
+            <td> </td>
+            <td>0.00087975</td>
+        </tr>
+        <tr>
+            <td>N = 6400</td>
+            <td>0.01453</td>
+            <td> </td>
+            <td>0.0010344999999999998</td>
+        </tr>
+        <tr>
+            <td>N = 12800</td>
+            <td>0.01315</td>
+            <td> </td>
+            <td>0.00140425</td>
+        </tr>
+    </tbody>
+</table>
 
 
 
