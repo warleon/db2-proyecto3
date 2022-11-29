@@ -6,25 +6,31 @@
 |Chahua, Luis||
 ||Algoritmo KDTree|
 ||Reducción de Dimensionalidad|
-||Algoritmo KNN Secuencial(por rango y k)|
+||Algoritmo KNN Secuencial(por rango y k) optimizado|
 ||Experimentación|
+||Presentacion|
 ||Informe|
 |Rubio, Ignacio|
 ||ReactJs Front-end|
 ||Dev server proxy|
 ||Comunicación asíncrona con el API|
 ||Informe parte frontend|
+||Presentacion|
 |Angeles, JeanPier||
-||Aguilar, Anthony|
-|| Experimentacion|
-||Intentos fallidos|
+||Informe|
+||Backend|
+||Preprocessamiento|
+||Indexacion RTree|
+||KNN secuencial no optimizado|
+||Experimentacion|
+||Presentacion|
 |Aguilar, Anthony||
 ||Informe|
 ||Backend|
 ||Preprocessamiento|
-||Fragmentacion del dataset|
-||Indexacion|
-||Dockerizacion|
+||Indexacion RTree|
+||KNN secuencial no optimizado|
+||Experimentacion|
 ||Presentacion|
 
 
