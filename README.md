@@ -19,11 +19,11 @@ Para la indexacion de las imagenes primero las analaizamos con la libreria de "f
 ### Búsqueda KNN Secuencial
 Se pasa como parámetro la cantidad de imágenes a tomar(k). Para ello, mediante un for se itera en las imágenes para así almacenarlo en una estructura que puede ser un array o un heap. Dependiendo de la estructura que se escoja, se obtienen diferentes complejidades.
 
+### Búsqueda KNN Secuencial por rango
+Se implementó la búsqueda por rango para el caso de KNNSequencial, en el cual pasamos como parámetro al radio de búsqueda r. Para ello, con el radio se crea un espacio de búsqueda y luego mediante un for se itera en las imágenes para así almacenarlo en una estructura que puede ser un array o un heap. Dependiendo de la estructura que se escoja, se obtienen diferentes complejidades.
+
 ### Búsqueda RTree
 Para la busqueda KNN la libreria nos proporciona con una funcion "nearest" la cual aplica el algoritmo visto en clase para encontrar los N vecinos mas cercanos.
-
-### Búsqueda por rango
-Se implementó la búsqueda por rango para el caso de KNNSequencial, en el cual pasamos como parámetro al radio de búsqueda r. Para ello, con el radio se crea un espacio de búsqueda y luego mediante un for se itera en las imágenes para así almacenarlo en una estructura que puede ser un array o un heap. Dependiendo de la estructura que se escoja, se obtienen diferentes complejidades.
 
 ### Búsqueda KNN HighD
 Se implementó este algoritmo aplicando la reducción de la dimensionalidad (PCA) a un tamaño de 50. Luego, con la libería de SKLearn se usó una instancia de KDTree y se insertó los encodings con los files. Luego, se realizó la búsqueda con una complejidad de O(log(n)). El procedimiento es primero llamar a la librería de face encodings, con el encoding reducido a un tamaño de 50. Luego, crear una instancia de KDTree y llamar a la función de query para la consulta. 
