@@ -17,7 +17,7 @@ dataPath = "../data/"
 indexPath="../index/Rtree"
 config =index.Property()
 config.dimension = 128
-#idx = index.Rtree(indexPath,properties=config,interleaved=False)
+idx = index.Rtree(indexPath,properties=config,interleaved=False)
 
 def toEnc(vec):
     c = vec[0::2]
@@ -229,15 +229,14 @@ def time_knn_secuencial(faces,N=10):
     return round(t2-t1,6)
 
 
-if __name__=="__main__":
-
-    #faces = load_faces(12800)
-    #faces = load_faces(100)
-    #with open("./faces.json","w") as file:
-    #    js.dump(faces,file)
-    with open("./faces.json","r") as file:
-        faces=js.load(file)
-        for n in [100,200,400,800,1600,3200,6400,12800]:
-            #t = time_knn_rtree(faces,n)
-            t = time_knn_secuencial(faces,n)
-            print(t)
+# if __name__=="__main__":
+#     #faces = load_faces(12800)
+#     #faces = load_faces(100)
+#     #with open("./faces.json","w") as file:
+#     #    js.dump(faces,file)
+#     with open("./faces.json","r") as file:
+#         faces=js.load(file)
+#         for n in [100,200,400,800,1600,3200,6400,12800]:
+#             #t = time_knn_rtree(faces,n)
+#             t = time_knn_secuencial(faces,n)
+#             print(t)
