@@ -96,3 +96,11 @@ La experimentación se realizó variando los tamaños de N y fijando el valor de
 <img src="images/grafica.png" width="500">
 
 En esta gráfica, se puede apreciar que, comparando tiempos de ejecución, se tiene que KDHighD < RTree < KNN_Sequential. Esto se debe a que el uso del índice y el uso de las estructuras de datos hacen más eficiente los algoritmos de búsqueda a comparación de hacerlo secuencialmente. 
+
+# Frontend
+
+## Librerías utilizadas
+El front se implementó en JS utilizando principalmente el framework/librería ReactJS. Para la comunicación con la API se utilizó la librería axios. Para los estilos se utilizó CSS.
+
+## Use Case
+Primero el usuario le hace click al botón de subir archivo y este selecciona una imagen. La imagen se muestra en pantalla. Después, el usuario ingresa un valor en el input de topk, esto determinará cuantas imágenes se piden en el request por persona en la foto ingresada. Finalmente, el usuario le hace click al botón que dice submit, lo que causa que se haga un request a la API que retorna un arreglo de arreglos de todos, un arreglo por persona en la foto. Estas imágenes se muestran debajo de la imagen con la que se compararon.
