@@ -9,7 +9,7 @@ function PersonDisplay({ images, index }) {
             <div className="person-imgs-cont">
                 {
                 images.map((item) => {
-                    return <div className="img-score-cont"><div style={{backgroundImage: `url(${"api/"+item.image})`}} className="person-img"></div><span className="img-score-text">Score: {item.distance.toFixed(4)}</span></div>
+                    return <div className="img-score-cont"><div style={{backgroundImage: `url(${"api/"+item.image})`}} className="person-img"></div>{/* <span className="img-score-text">Score: {item.distance.toFixed(4)}</span> */}</div>
                 })}
             </div>
         </div>

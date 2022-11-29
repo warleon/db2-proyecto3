@@ -156,18 +156,72 @@ def time_knn_rtree(faces,N=10):
     return (res,round(t2-t1,6))
 
 
+def experimentation():
+  list_answers = [[],[]]
+  for i in [100,200,400,800,1600,3200,6400,12800]:
+    allowedExtensions = [".jpg"]
+    encoding_results = list()
+    encoding_directory = list()
+    doIndexing1("/content/db2-proyecto3/data/", i)
+    for j in ["KNN_KDTree","knn_sequential"]:
+      ans = 0
+      if(j=="KNN_KDTree"):
+        scaler = StandardScaler()
+        scaler.fit(encoding_results)
+        encodings_normalized = scaler.transform(encoding_results)
+        pca = PCA(50)
+        pca.fit(encodings_normalized)
+        encodings_pca = pca.transform(encodings_normalized)
+        df = pd.DataFrame(encodings_pca)
+        df['paths'] = encoding_directory
+       
+        for k in range(4):
+          image = fr.load_image_file('/content/db2-proyecto3/data/Dwayne_Wade/Dwayne_Wade_0001.jpg')
+        
+          faces = fr.face_encodings(image)
+          face_norm = scaler.transform(faces[0].reshape(1, -1))
+          face_pca = pca.transform(face_norm)
+          a=df[df.columns[:-1]]
+        
+          kd_tree = KDTree(a)
+          t1= time.time()
+          result = kd_tree.query([face_pca[0]], 8)
+          t2= time.time()
+          #t = KNN_KDTree('/content/db2-proyecto3/data/Dwayne_Wade/Dwayne_Wade_0001.jpg',8)[1]
+          ans = ans + round(t2-t1,6)
+        ans= ans/4.0
+        list_answers[1].append(ans)
+      if(j=="knn_sequential"):
+        for k in range(4):
+        
+          priority_queue = []
+          image_encoding = fr.face_encodings(fr.load_image_file('/content/db2-proyecto3/data/Dwayne_Wade/Dwayne_Wade_0001.jpg'))
+          distances = fr.face_distance(encoding_results, image_encoding[0])
+          t1= time.time()
+          for i in range(len(distances)):
+              heappush(priority_queue, (-distances[i], encoding_directory[i]))
+              if(len(priority_queue) > 8):
+                 heappop(priority_queue)
+          answers = sorted(priority_queue, key=lambda tup: tup[0], reverse=True)
+          t2= time.time()
+          ans = ans + round(t2-t1,6)
+        ans = ans/4.0
+        list_answers[0].append(ans)
+    print(list_answers)  
+#if __name__=="__main__":
+	#index already done :v
+	#doIndexing1(direction,10)
+	#df = generate_table()
+	#doIndexing(dataPath)
+
 if __name__=="__main__":
 
     faces = load_faces(12800)
     #faces = load_faces(100)
     with open("./faces.json","w") as file:
         js.dump(faces,file)
-    with open("./faces.json","r") as file:
-        #faces=js.load(file)
-        for n in [100,200,400,800,1600,3200,6400,12800]:
-            t = time_knn_rtree(faces,n)
-            print(t)
-	#index already done :v
-	#doIndexing1(direction,10)
-	#df = generate_table()
-	#doIndexing(dataPath)
+    # with open("./faces.json","r") as file:
+    #     #faces=js.load(file)
+    #     for n in [100,200,400,800,1600,3200,6400,12800]:
+    #         t = time_knn_rtree(faces,n)
+    #         print(t)
