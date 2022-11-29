@@ -1,10 +1,32 @@
 # Proyecto 3 de Base de datos 2.
 
 ## **Integrantes**
-* Chahua, Luis
-* Aguilar, Anthony
-* Rubio, Ignacio
-* Ángeles, Jean
+|Integrante|Actividad|
+|-|-|
+|Chahua, Luis||
+||Algoritmo KDTree|
+||Reducción de Dimensionalidad|
+||Algoritmo KNN Secuencial(por rango y k)|
+||Experimentación|
+||Informe|
+|Rubio, Ignacio|
+||Postgresql|
+||Similiud coseno|
+||Informe|
+|Angeles, JeanPier||
+||Aguilar, Anthony|
+|| Experimentacion|
+||Intentos fallidos|
+|Aguilar, Anthony||
+||Informe|
+||Backend|
+||Preprocessamiento|
+||Fragmentacion del dataset|
+||Indexacion|
+||Dockerizacion|
+||Presentacion|
+
+
 
 # Implementación
 
